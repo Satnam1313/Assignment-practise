@@ -70,7 +70,7 @@
              <div class="form-group ">
       <asp:Label CssClass="col-sm-3 control-label " ID="Image" runat="server" Text="Upload Image"></asp:Label>
       <div class="col-sm-6 ">
-     <asp:FileUpload  CssClass="form-control btn-primary"   ID="ImageUpload" runat="server" Font-Names="Upload Image" Font-Strikeout="False"  Text="Browse" OnClick="ImageUpload_Click"  /><div style="padding-top: 5px"><asp:PlaceHolder   ID="PlaceHolder1" runat="server"><mark class="text-warning">It add the description to recipe</mark></asp:PlaceHolder></div>
+     <asp:FileUpload  CssClass="form-control btn-primary"   ID="ImageUpload" runat="server" Font-Names="Upload Image" Font-Strikeout="False" OnClick="ImageUpload_Click"  /><div style="padding-top: 5px"><asp:PlaceHolder   ID="PlaceHolder1" runat="server"><mark class="text-warning">It add the description to recipe</mark></asp:PlaceHolder></div>
       </div></div>
            </div>
             <div class="col-sm-9 btn-toolbar ">

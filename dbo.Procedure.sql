@@ -4,8 +4,10 @@
 	@Category nvarchar(90),
 	@CookingTime nvarchar(90),
 	@Cuisine nvarchar(90),
+	@Limits nvarchar(90),
 	@RecipeDescription nvarchar(90),
-	@RecipeSteps nvarchar(90)
+	@RecipeSteps text 
 AS
-	insert into AddRecipe (RecipeNumbers, RecipeName ,SubmittedBy,Category, CookingTime,Cuisine ,Limits ,RecipeDescription ,RecipeSteps ,RecipeImage  ) values (@RecipeName ,	@SubmittedBy ,	@Category ,	@CookingTime, @Cuisine ,	@RecipeDescription, 	@RecipeSteps)
+	insert into AddRecipe ( RecipeName ,SubmittedBy,Category, CookingTime,Cuisine ,Limits ,RecipeDescription ,RecipeSteps  ) values
+						 (@RecipeName ,	@SubmittedBy ,	@Category ,	@CookingTime, @Cuisine ,@Limits,	@RecipeDescription, 	@RecipeSteps)
 RETURN 
