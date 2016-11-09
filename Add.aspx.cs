@@ -54,7 +54,10 @@ public partial class Add : Page
         command.Parameters.AddWithValue("@RecipeImage", bytes);
         command.ExecuteNonQuery();
         connection.Close();
+
     }
+
+    
 }
     
     

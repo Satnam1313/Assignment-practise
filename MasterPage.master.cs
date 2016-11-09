@@ -21,10 +21,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         PageCounter.Text = Convert.ToString(Application["PageCounter"]);
     }
-    
-      
-     
-    protected void color_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+    protected void SignIn_click(object sender, EventArgs e)
+    {
+        Response.Redirect("Signin.aspx");
+    }
+
+    protected void SignUp_Click(object sender, EventArgs e)
     {
         Response.Redirect("Signup.aspx");
     }

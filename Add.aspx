@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Add.aspx.cs" Inherits="Add" %>
 
-<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container formtext text padd">
@@ -10,13 +10,13 @@
    <div class="form-group ">
        <asp:Label CssClass="col-sm-3 control-label " ID="RecipeName" runat="server" Text="Recipe Name"></asp:Label>
       <div class="col-sm-6 ">
-        <asp:TextBox CssClass="form-control"  ID="Recipebox" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="form-control" placeholder="Recipe Name" ID="Recipebox" runat="server"></asp:TextBox>
     </div></div></div>
              <div class="form-horizontal">
    <div class="form-group ">
        <asp:Label CssClass="col-sm-3 control-label " ID="SubmittedBy" runat="server" Text="Submitted By"></asp:Label>
       <div class="col-sm-6 ">
-        <asp:TextBox CssClass="form-control"  ID="SubmittedBox" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="form-control" placeholder="Submitted By" ID="SubmittedBox" runat="server"></asp:TextBox>
     </div></div></div>
             <div class="form-horizontal">
              <div class="form-group ">
@@ -32,7 +32,7 @@
    <div class="form-group ">
        <asp:Label CssClass="col-sm-3 control-label " ID="CookingTime" runat="server" Text="Cooking Time"></asp:Label>
       <div class="col-sm-6 ">
-        <asp:TextBox CssClass="form-control"  ID="CookingTimeBox" runat="server"></asp:TextBox> 
+        <asp:TextBox CssClass="form-control" placeholder="hh:mm"  ID="CookingTimeBox" runat="server"></asp:TextBox> 
       </div></div></div>
         <div class="form-horizontal">
              <div class="form-group ">
@@ -57,14 +57,14 @@
    <div class="form-group ">
        <asp:Label CssClass="col-sm-3 control-label " ID="RecipeDescription" runat="server" Text="Recipe Description"></asp:Label>
       <div class="col-sm-6 ">
-        <asp:TextBox ID="Steps" CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox ID="Steps" CssClass="form-control" placeholder="Write a small description for your recipe" runat="server" TextMode="MultiLine"></asp:TextBox>
       </div></div></div>
                <div class="form-horizontal">
    <div class="form-group ">
        <asp:Label ID="RecipeSteps" CssClass="col-sm-3 control-label" runat="server" Text="Recipe Steps">
           </asp:Label>
       <div class="col-sm-6 ">
-         <asp:TextBox ID="RecipeStep" CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
+         <asp:TextBox ID="RecipeStep" placeholder="Write the steps in well organised manner" CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
       </div></div></div>
             <div class="form-horizontal">
              <div class="form-group ">
@@ -74,7 +74,7 @@
       </div></div>
            </div>
             <div class="col-sm-9 btn-toolbar ">
-                <asp:Button  class="btn btn-warning pull-right Cancel" id="Cancel" type="reset" value="Cancel" Text="Cancel" runat="server"/>&nbsp; <asp:Button class="btn btn-success pull-right Submit" id="Submit" type="submit" Text="Submit"  runat="server" OnClick="Submit_Click"  />
+                <asp:Button  class="btn btn-warning pull-right Cancel" id="Cancel" type="reset" value="Cancel" Text="Cancel" runat="server" />&nbsp; <asp:Button class="btn btn-success pull-right Submit" id="Submit" type="submit" Text="Submit"  runat="server" OnClick="Submit_Click"  />
             </div>
            
                 
