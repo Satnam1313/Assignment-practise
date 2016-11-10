@@ -16,5 +16,10 @@ public partial class Signin : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void SignIn_Click(object sender, EventArgs e)
+    {
+        Response.RedirectPermanent("AfterSignIn.aspx");
+    }
 }

@@ -48,13 +48,15 @@
                      
    <asp:Label CssClass="col-sm-6 control-label " ID="ConfirmLabel" runat="server" Text="Confirm Password"></asp:Label>
       <div class="col-sm-6 ">
-        <asp:TextBox CssClass="form-control" placeholder="Confirm Password" TextMode="Password"  ID="ConfirmBox" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="form-control" placeholder="Confirm Password" TextMode="Password"  ID="ConfirmBox" runat="server"></asp:TextBox> <asp:Label ID="UserExists" CssClass="validators" runat="server" Text="" ></asp:Label>
           <asp:RequiredFieldValidator CssClass="validators" ID="confirmValidator" runat="server" ErrorMessage="Field is required" ControlToValidate="ConfirmBox" SetFocusOnError="True" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-          <asp:CompareValidator CssClass="validators" ID="comparePassword" runat="server" ErrorMessage="Password doesn't match" SetFocusOnError="True" ControlToValidate="ConfirmBox" ValueToCompare="PasswordBox" Display="Dynamic" ForeColor="Red"></asp:CompareValidator><br/>
+          <asp:CompareValidator ID="comparePassword" CssClass="validators" runat="server" ErrorMessage="Password doesn't match" SetFocusOnError="True" ControlToCompare="PasswordBox" ControlToValidate="ConfirmBox" ForeColor="#FF3300"></asp:CompareValidator>
+         
+         <br/>
           <input class="text" id="ShowPassword" type="checkbox" onclick="showHidePassword(this)" />&nbsp;Show Password
           </div></div></div>  </div>
                     <div class=" btn-toolbar pull-right col-sm-offset-5   " style="padding-right: 80px">
-                 <asp:Button class="btn btn-success  Submit  "  id="SignIn" type="submit" Text="Sign in"  runat="server" Height="36px" Width="146px" OnClick="SignIn_Click"   />
+                 <asp:Button class="btn btn-success  Submit  "  id="SignUp" type="submit" Text="Sign Up"  runat="server" Height="36px" Width="146px" OnClick="SignIn_Click"   />
             </div>
 
                
