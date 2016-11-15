@@ -38,12 +38,23 @@
                     </div>
                 </div>
                 <div class="col-sm-8 btn-toolbar ">
-                    <input class="btn btn-success pull-right Submit" id="Submit" type="submit" value="Search" runat="server"/>
+                    <asp:button class="btn btn-success pull-right Submit" id="Submit" Text="Search" type="submit" value="Search" runat="server" OnClick="Submit_Click"></asp:button>
                 </div>
 
 
             </section>
-        </div>
-    </div>
-</asp:Content>
 
+        </div>
+    </div><div class="services container">
+        
+        <div class="row">
+            <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6
+                 col-md-4  ">
+                
+                    <div class="col-xs-offset-1 col-sm-offset-0">
+            
+                <asp:PlaceHolder runat="server" ID="plcHolder"></asp:PlaceHolder>
+                       </div> </section>
+            </div>
+            </div>
+</asp:Content>

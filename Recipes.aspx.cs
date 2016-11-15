@@ -17,6 +17,7 @@ public partial class Recipes : System.Web.UI.Page
             new SqlCommand("SELECT COUNT(*) FROM AddRecipe", connection);
         connection.Open();
         int count = (int) command.ExecuteScalar();
+
         for (int i = 0; i < count ; i++)
         {
             System.Web.UI.HtmlControls.HtmlGenericControl createDiv =

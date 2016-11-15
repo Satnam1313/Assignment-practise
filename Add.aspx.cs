@@ -21,7 +21,7 @@ public partial class Add : Page
         connection.Open();
         var command = new SqlCommand("AddingRecipe", connection)
         {
-            CommandType = CommandType.StoredProcedure
+            CommandType =CommandType.StoredProcedure
         };
         command.Parameters.AddWithValue("@RecipeName", Recipebox.Text);
         command.Parameters.AddWithValue("@SubmittedBy", SubmittedBox.Text);
