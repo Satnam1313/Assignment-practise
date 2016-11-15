@@ -20,10 +20,18 @@ public partial class Search : System.Web.UI.Page
 
     protected void Submit_Click(object sender, EventArgs e)
     {
+        string checkBox;
         connection.Open();
-        string query = "Select * from AddRecipe where RecipeName=@RecipeName";
+        string query = "Select * from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine";
         SqlCommand command = new SqlCommand(query, connection);
         command.Parameters.AddWithValue("@RecipeName",RecipeBox.Text);
+        if (Private.Checked)
+            checkBox = "Private";
+        else
+            checkBox = "Public";
+        command.Parameters.AddWithValue("@Private", checkBox);
+
+        command.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
         SqlDataReader reader = command.ExecuteReader();
         if (reader.HasRows)
         {
