@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
-public partial class Signup : System.Web.UI.Page
+public partial class Signup : Page
 {
     private readonly SqlConnection connection =
         new SqlConnection(
@@ -17,35 +12,32 @@ public partial class Signup : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
     protected void SignIn_Click(object sender, EventArgs e)
     {
         connection.Open();
-    
+        bool userNameExists = false;
+
+        var command =
+            new SqlCommand("SELECT COUNT(*) FROM Signin WHERE UserName = @UserName", connection);
+        command.Parameters.AddWithValue("@UserName", UserNameBox.Text.Trim());
+        userNameExists = (int) command.ExecuteScalar() > 0;
+
         
-        ArrayList companylist = new ArrayList();
-
-        var query = "Select count(*) from SignIn where UserName= "+"'UserNameBox.Text'";
-
-        SqlCommand cmd = new SqlCommand(query, connection);
-       int i= cmd.ExecuteNonQuery();
-
-        if (i==0)
-            {
-                var command = new SqlCommand("SigningIn", connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                command.Parameters.AddWithValue("@UserName", UserNameBox.Text);
+        
+        if (userNameExists)
+        {
+            UserExists.Text = "User Already Exists";
+        }
+        else
+        {
+            command = new SqlCommand("SigningIn", connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@UserName", UserNameBox.Text);
             command.Parameters.AddWithValue("@Password", PasswordBox.Text);
             command.ExecuteNonQuery();
             connection.Close();
-            }
-            else
-            {
-                UserExists.Text = "User Already Exists";
-            }
         }
     }
+}

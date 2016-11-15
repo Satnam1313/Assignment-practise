@@ -45,7 +45,8 @@
     </div></div></div>
                   <div class="form-horizontal ">
                 <div class="form-group ">
-                     
+                 
+                        
    <asp:Label CssClass="col-sm-6 control-label " ID="ConfirmLabel" runat="server" Text="Confirm Password"></asp:Label>
       <div class="col-sm-6 ">
         <asp:TextBox CssClass="form-control" placeholder="Confirm Password" TextMode="Password"  ID="ConfirmBox" runat="server"></asp:TextBox> <asp:Label ID="UserExists" CssClass="validators" runat="server" Text="" ></asp:Label>

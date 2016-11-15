@@ -65,8 +65,8 @@
 
                         </ul>
                         <div class="navbarbutton btn-toolbar ">
-                           <asp:Button CssClass="btn btn-default navbar-right control-label "  Text="Sign in"  runat="server" OnClick="SignIn_click"/>
-                            <asp:Button ID="color"  CssClass="btn btn-success navbar-right control-label " Text="Sign up" runat="server" OnClick="SignUp_Click" />
+                            <a class="btn btn-default navbar-right control-label" href="Signin.aspx" > Sign In</a>
+                             <a  class="btn btn-success navbar-right control-label" href="Signup.aspx" >Sign Up</a>
                         </div>
                     </div>
                 </div>

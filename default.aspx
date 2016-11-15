@@ -45,10 +45,7 @@
         </div>
     </div>
     <div class="services container">
-
-        <div class="pad">
-
-        </div>
+        
         <div class="row">
             <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6
                  col-md-4  ">
