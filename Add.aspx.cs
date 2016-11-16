@@ -33,8 +33,8 @@ public partial class Add : Page
         else
             checkBox = "Public";
         command.Parameters.AddWithValue("@Limits", checkBox);
-        command.Parameters.AddWithValue("@RecipeDescription", RecipeStep.Text);
-        command.Parameters.AddWithValue("@RecipeSteps", Steps.Text);
+        command.Parameters.AddWithValue("@RecipeDescription", Steps.Text);
+        command.Parameters.AddWithValue("@RecipeSteps", RecipeStep.Text);
         var postedFile = ImageUpload.PostedFile;
         var filename = Path.GetFileName(postedFile.FileName);
         var fileExtension = Path.GetExtension(filename);

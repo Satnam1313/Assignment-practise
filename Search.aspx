@@ -4,7 +4,7 @@
     <div class="container formtext text padd">
         <div class="row">
             <section class="col-sm-12">
-
+                
 
                 <div class="form-horizontal">
                     <div class="form-group ">
@@ -45,16 +45,13 @@
             </section>
 
         </div>
-    </div><div class="services container">
-        
-        <div class="row">
-            <section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6
-                 col-md-4  ">
-                
-                    <div class="col-xs-offset-1 col-sm-offset-0">
+    <div class="padd">
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3">
+        <asp:PlaceHolder  runat="server" ID="SearchResults">
             
-                <asp:PlaceHolder runat="server" ID="plcHolder"></asp:PlaceHolder>
-                       </div> </section>
-            </div>
-            </div>
+            
+           
+        </asp:PlaceHolder></div>
+    </div></div></div>
 </asp:Content>

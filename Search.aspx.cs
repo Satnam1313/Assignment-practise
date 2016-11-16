@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using System.Drawing;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-public partial class Search : System.Web.UI.Page
+public partial class Search : Page
 {
     private readonly SqlConnection connection =
         new SqlConnection(
-            "Data Source=DESKTOP-B5SA0JC\\SATNAM;Initial Catalog=Comp229;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            "Data Source=DESKTOP-B5SA0JC\\SATNAM;Initial Catalog=Comp229;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;MultipleActiveResultSets=True");
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
 
 
@@ -22,42 +20,64 @@ public partial class Search : System.Web.UI.Page
     {
         string checkBox;
         connection.Open();
-        string query = "Select * from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine";
-        SqlCommand command = new SqlCommand(query, connection);
-        command.Parameters.AddWithValue("@RecipeName",RecipeBox.Text);
+        var query = "Select * from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine";
+        var check = "Select Count(*) from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine";
+        var command = new SqlCommand(query, connection);
+        var command2=new SqlCommand(check,connection);
+        command2.Parameters.AddWithValue("@RecipeName", RecipeBox.Text);
         if (Private.Checked)
             checkBox = "Private";
         else
             checkBox = "Public";
+        command2.Parameters.AddWithValue("@Private", checkBox);
+
+        command2.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
+        command.Parameters.AddWithValue("@RecipeName", RecipeBox.Text);
+      
         command.Parameters.AddWithValue("@Private", checkBox);
 
         command.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
-        SqlDataReader reader = command.ExecuteReader();
+        var reader = command.ExecuteReader();
+        
         if (reader.HasRows)
         {
-            int i =0;
+            var i = 0;
             while (reader.Read())
             {
-                 
+                
+                //int count =(int)command2.ExecuteScalar();
+                //for (int j = 0; j<count ; j++)
+                //{
+                    
+              
+                var createDiv =
+                    new HtmlGenericControl("DIV");
+                    
+                createDiv.Attributes["class"] = "thumbnail";
+                    var image = "Select RecipeImage from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine and RecipeNumbers=RecipeNumbers";
+                    var imagedata = new SqlCommand(image, connection);
+                    imagedata.Parameters.AddWithValue("@RecipeName", RecipeBox.Text);
+                    if (Private.Checked)
+                        checkBox = "Private";
+                    else
+                        checkBox = "Public";
+                    imagedata.Parameters.AddWithValue("@Private", checkBox);
 
-               
-                    System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
-                    createDiv.Attributes["class"] = "btn btn-success";
+                    imagedata.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
+
+                    var bytes = (byte[])imagedata.ExecuteScalar();
+                    var strBase64 = Convert.ToBase64String(bytes);
+                    var imageUrl = "data:Image;base64," + strBase64;
+                    createDiv.InnerHtml = "<img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>";   
                     createDiv.ID = "createDiv" + i;
-                    createDiv.Style.Add(HtmlTextWriterStyle.Color, "Red");
-                    createDiv.Style.Add(HtmlTextWriterStyle.Height, "100px");
-                    createDiv.Style.Add(HtmlTextWriterStyle.Width, "400px");
-
-                    createDiv.InnerHtml = " I'm a div, from code behind ";
-                    plcHolder.Controls.Add(createDiv);
-                    createDiv.InnerHtml += reader["RecipeName"];
+                SearchResults.Controls.Add(createDiv);
                 i++;
+                //}
+                //break;
+                
             }
-            
         }
         connection.Close();
     }
-
-
 }
+
