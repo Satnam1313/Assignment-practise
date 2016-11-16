@@ -64,11 +64,12 @@ public partial class Search : Page
                     imagedata.Parameters.AddWithValue("@Private", checkBox);
 
                     imagedata.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
+                
 
-                    var bytes = (byte[])imagedata.ExecuteScalar();
+                var bytes = (byte[])imagedata.ExecuteScalar();
                     var strBase64 = Convert.ToBase64String(bytes);
                     var imageUrl = "data:Image;base64," + strBase64;
-                    createDiv.InnerHtml = "<img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>";   
+                    createDiv.InnerHtml = "<img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>"+ "<button class='btn btn-info' onclick="+ "Response.Redirect('Add.aspx')"+">More Info</button>";   
                     createDiv.ID = "createDiv" + i;
                 SearchResults.Controls.Add(createDiv);
                 i++;
@@ -76,8 +77,15 @@ public partial class Search : Page
                 //break;
                 
             }
+
         }
         connection.Close();
     }
+
+    protected void info_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Add.aspx");
+    }
+
 }
 

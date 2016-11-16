@@ -41,7 +41,6 @@
                     <asp:button class="btn btn-success pull-right Submit" id="Submit" Text="Search" type="submit" value="Search" runat="server" OnClick="Submit_Click"></asp:button>
                 </div>
 
-
             </section>
 
         </div>
