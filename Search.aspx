@@ -43,14 +43,14 @@
 
             </section>
 
-        </div>
-    <div class="padd">
-    <div class="row">
-        <div class="col-xs-6 col-sm-4 col-md-3">
-        <asp:PlaceHolder  runat="server" ID="SearchResults">
-            
-            
-           
-        </asp:PlaceHolder></div>
-    </div></div></div>
+        </div></div>
+    <div class="container padd">
+        <div class="row">
+          <div id="hello" runat="server">
+              
+              
+
+          </div>
+           </div>
+    </div>
 </asp:Content>

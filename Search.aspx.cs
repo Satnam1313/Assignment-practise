@@ -44,34 +44,36 @@ public partial class Search : Page
             var i = 0;
             while (reader.Read())
             {
-                
+
                 //int count =(int)command2.ExecuteScalar();
                 //for (int j = 0; j<count ; j++)
                 //{
-                    
-              
+                var image = "Select RecipeImage from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine and RecipeNumbers=RecipeNumbers";
+                var imagedata = new SqlCommand(image, connection);
+                imagedata.Parameters.AddWithValue("@RecipeName", RecipeBox.Text);
+                if (Private.Checked)
+                    checkBox = "Private";
+                else
+                    checkBox = "Public";
+                imagedata.Parameters.AddWithValue("@Private", checkBox);
+
+                imagedata.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
+
+
+
+                var bytes = (byte[])imagedata.ExecuteScalar();
+                var strBase64 = Convert.ToBase64String(bytes);
+                var imageUrl = "data:Image;base64," + strBase64;
+
                 var createDiv =
                     new HtmlGenericControl("DIV");
                     
-                createDiv.Attributes["class"] = "thumbnail";
-                    var image = "Select RecipeImage from AddRecipe where RecipeName=@RecipeName and Limits=@Private and Cuisine=@Cuisine and RecipeNumbers=RecipeNumbers";
-                    var imagedata = new SqlCommand(image, connection);
-                    imagedata.Parameters.AddWithValue("@RecipeName", RecipeBox.Text);
-                    if (Private.Checked)
-                        checkBox = "Private";
-                    else
-                        checkBox = "Public";
-                    imagedata.Parameters.AddWithValue("@Private", checkBox);
-
-                    imagedata.Parameters.AddWithValue("@Cuisine", CuisineList.Text);
-                
-
-                var bytes = (byte[])imagedata.ExecuteScalar();
-                    var strBase64 = Convert.ToBase64String(bytes);
-                    var imageUrl = "data:Image;base64," + strBase64;
-                    createDiv.InnerHtml = "<img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>"+ "<button class='btn btn-info' onclick="+ "Response.Redirect('Add.aspx')"+">More Info</button>";   
+                createDiv.Attributes["class"] ="col-md-3 col-sm-4 col-xs-12";
+                 
+                    createDiv.InnerHtml = "<div class='thumbnail'><img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>"+ "<a id='moreinfo' useCapture='true' class='btn btn-info' href='moreInfo.aspx''>More Info</a></div>";
                     createDiv.ID = "createDiv" + i;
-                SearchResults.Controls.Add(createDiv);
+                //"<button class='btn btn-info' onclick=''>More Info</button>"
+                hello.Controls.Add(createDiv);
                 i++;
                 //}
                 //break;
@@ -82,10 +84,6 @@ public partial class Search : Page
         connection.Close();
     }
 
-    protected void info_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Add.aspx");
-    }
-
+ 
 }
 

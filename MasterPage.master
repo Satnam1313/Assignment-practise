@@ -35,7 +35,7 @@
                           <span class="icon-bar"></span>
                       </button>
 
-                        <img alt="logo" src="images/icon.png" style="height: 52px; width: 50px;" class="img-responsive pull-left"/><span class="control-label navbar-text " style="font-family: 'Pacifico', cursive; font-size: 23px">Cook Book</span>
+                        <img alt="logo" src="images/icon.png" style="height: 52px; width: 50px;" class="img-responsive pull-left"/><span class="control-label navbar-text " style="font-family: 'Pacifico', cursive; font-size: 23px">CookBook</span>
 
                     </div>
                     <div class="collapse navbar-collapse" id="mycollapse">
