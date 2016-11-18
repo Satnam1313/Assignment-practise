@@ -43,11 +43,11 @@
                         <div class="navbarbutton  pull-right  "><div class="dropdown">
                                 <div class="btn btn-group">
                                     <button type="button" class="btn btn-info">Hi  <asp:Label ID="drop" runat="server" Text=""></asp:Label></button>
-                           <button type="button" class="btn btn-info dropdown-toggle" id="Premission" data-toggle="dropdown" aria-haspopup="True" aria-expanded="False"> <span class="caret"></span>
+                           <button type="button" class="btn btn-info dropdown-toggle" id="Premission" data-toggle="dropdown" aria-haspopup="True" aria-expanded="False" runat="server"> <span class="caret"></span>
                                <span class="sr-only"></span>
                            </button>
-                             <ul class="dropdown-menu" aria-labelledby="Premission">
-                                <li><a href="#">Playlist</a></li>
+                             <ul class="dropdown-menu" style="background-color: #5bc0de" aria-labelledby="Premission">
+                                <li ><asp:Button CssClass="btn btn-group-justified " runat="server" Text="Logout" OnClick="Logout_Click"></asp:Button></li>
                                 <li><a href="#">Playlist</a></li>
                                 <li><a href="#">Playlist</a></li>
                             </ul>

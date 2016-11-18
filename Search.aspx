@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8 btn-toolbar ">
-                    <asp:button class="btn btn-success pull-right Submit" id="Submit" Text="Search" type="submit" value="Search" runat="server" OnClick="Submit_Click"></asp:button>
+                    <asp:button CssClass="btn btn-success pull-right Submit" id="Submit" Text="Search"  value="Search" runat="server" OnClick="Submit_Click"></asp:button>
                 </div>
 
             </section>

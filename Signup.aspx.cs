@@ -32,12 +32,16 @@ public partial class Signup : Page
         }
         else
         {
-            command = new SqlCommand("SigningIn", connection);
+            command = new SqlCommand("SignUpPro", connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@UserName", UserNameBox.Text);
             command.Parameters.AddWithValue("@Password", PasswordBox.Text);
+            command.Parameters.AddWithValue("@UserEmail", EmailBox.Text);
+            command.Parameters.AddWithValue("@UserAddress", AddressBox.Text);
             command.ExecuteNonQuery();
             connection.Close();
+            Session["userName"] = UserNameBox.Text;
+            Response.RedirectPermanent("AfterSignIn.aspx");
         }
     }
 }

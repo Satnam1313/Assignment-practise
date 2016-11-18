@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,26 +27,28 @@ public partial class Signin : System.Web.UI.Page
         bool userNameExists = false;
 
         var command =
-            new SqlCommand("SELECT COUNT(*) FROM Signin WHERE UserName = @UserName and UserPassword=@Password", connection);
+            new SqlCommand("SELECT COUNT(*) FROM SignUpTb WHERE UserName = @UserName and UserPassword=@Password", connection);
         command.Parameters.AddWithValue("@UserName", UserNameBox.Text.Trim());
         command.Parameters.AddWithValue("@Password", PasswordBox.Text.Trim());
         userNameExists = (int)command.ExecuteScalar() > 0;
 
 
 
-        if (userNameExists)
-        {
-            command = new SqlCommand("SigningIn", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@UserName", UserNameBox.Text);
-            command.Parameters.AddWithValue("@Password", PasswordBox.Text);
-            command.ExecuteNonQuery();
-            connection.Close();
+        if (userNameExists) {
+            var command1 =
+           new SqlCommand("insert into SignIn(userName,userPassword)values (@UserName,@Password)", connection);
+            
+            command1.Parameters.AddWithValue("@UserName", UserNameBox.Text);
+            command1.Parameters.AddWithValue("@Password", PasswordBox.Text);
+            command1.ExecuteNonQuery();
+            Session["userName"] = UserNameBox.Text;
             Response.RedirectPermanent("AfterSignIn.aspx");
+            connection.Close();
         }
         else
         {
-            UserNameBox.Text = "User Already Exists";
+            UserNameBox.Text = "User doesn't Exists";
+            UserNameBox.ForeColor=Color.Red;
         }
         
     }
