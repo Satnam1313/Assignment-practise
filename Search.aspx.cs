@@ -68,9 +68,10 @@ public partial class Search : Page
                 var createDiv =
                     new HtmlGenericControl("DIV");
                     
-                createDiv.Attributes["class"] ="col-md-3 col-sm-4 col-xs-12";
+                createDiv.Attributes["class"] ="col-md-4 col-sm-6 col-xs-8 col-lg-4";
+                
                  
-                    createDiv.InnerHtml = "<div class='thumbnail'><img src=" + imageUrl + " alt='Mountain View' style='width: 100px; height: 100px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>"+ "<a id='moreinfo' useCapture='true' class='btn btn-info' href='moreInfo.aspx''>More Info</a></div>";
+                    createDiv.InnerHtml = "<div class='thumbnail'><img class='img-responsive img-rounded img-thumbnail' src=" + imageUrl + " alt='Mountain View' style=' height: 250px; '> <div class='caption'> <h2>" + reader["RecipeName"] + "</h2></div>" + "<p>" + reader["RecipeDescription"] + "</p>"+ "<a id='moreinfo' useCapture='true' class='btn btn-info' href='moreInfo.aspx''>More Info</a></div>";
                     createDiv.ID = "createDiv" + i;
                 //"<button class='btn btn-info' onclick=''>More Info</button>"
                 hello.Controls.Add(createDiv);
